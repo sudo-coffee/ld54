@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 window/size/viewport_width=800
 window/size/viewport_height=800
 
+[layer_names]
+
+2d_physics/layer_1="Elevator"
+2d_physics/layer_2="Shoulders"
+2d_physics/layer_3="Head"
+
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
