@@ -1,15 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://cecnwrbpd3c2o"]
+[gd_scene load_steps=11 format=3 uid="uid://cecnwrbpd3c2o"]
 
 [ext_resource type="Texture2D" uid="uid://dap0yoohtcqt" path="res://devart/floor.png" id="1_f3onb"]
 [ext_resource type="Texture2D" uid="uid://cufi6eu3lvllx" path="res://devart/background.png" id="1_jax02"]
+[ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_y45eh"]
 [ext_resource type="PackedScene" uid="uid://dmxr40anc7yh2" path="res://scenes/door.tscn" id="2_5v1a8"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="2_syntk"]
+[ext_resource type="Script" path="res://scenes/elevator.gd" id="2_tcffp"]
 [ext_resource type="Texture2D" uid="uid://d4helyobm3h2j" path="res://devart/chatbox.png" id="5_6qf4q"]
 [ext_resource type="PackedScene" uid="uid://5p38yv3d83ii" path="res://scenes/wall.tscn" id="5_14h17"]
 [ext_resource type="PackedScene" uid="uid://dmx38ulwadban" path="res://frame.tscn" id="6_jyvo4"]
 [ext_resource type="PackedScene" uid="uid://djax65cwt7veu" path="res://scenes/character.tscn" id="7_lpp7i"]
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_y45eh")
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="TestDoorTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_jax02")
@@ -17,20 +28,30 @@ centered = false
 
 [node name="Elevator" type="Node2D" parent="."]
 position = Vector2(25, 25)
+script = ExtResource("2_tcffp")
 
-[node name="Doors" type="Node2D" parent="Elevator"]
-position = Vector2(-400, -400)
+[node name="LockDoors" type="Timer" parent="Elevator"]
+wait_time = 0.4
+one_shot = true
 
-[node name="DoorLeft" parent="Elevator/Doors" instance=ExtResource("2_5v1a8")]
-position = Vector2(525, 875)
+[node name="OpenDoors" type="Timer" parent="Elevator"]
+wait_time = 0.4
+one_shot = true
 
-[node name="DoorRight" parent="Elevator/Doors" instance=ExtResource("2_5v1a8")]
-position = Vector2(650, 875)
+[node name="CloseDoors" type="Timer" parent="Elevator"]
+wait_time = 0.4
+one_shot = true
 
 [node name="Floor" type="Sprite2D" parent="Elevator"]
 texture = ExtResource("1_f3onb")
 centered = false
 offset = Vector2(25, 25)
+
+[node name="DoorLeft" parent="Elevator" instance=ExtResource("2_5v1a8")]
+position = Vector2(125, 475)
+
+[node name="DoorRight" parent="Elevator" instance=ExtResource("2_5v1a8")]
+position = Vector2(250, 475)
 
 [node name="WallWest" parent="Elevator" instance=ExtResource("5_14h17")]
 
@@ -44,7 +65,7 @@ rotation = -3.14159
 
 [node name="WallSouth" parent="Elevator" instance=ExtResource("6_jyvo4")]
 position = Vector2(0, 500)
-rotation = 4.71239
+rotation = -1.5708
 
 [node name="Chat" type="Node2D" parent="."]
 position = Vector2(550, 25)
@@ -53,22 +74,30 @@ position = Vector2(550, 25)
 texture = ExtResource("5_6qf4q")
 centered = false
 
-[node name="Player" parent="." instance=ExtResource("7_lpp7i")]
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Player" parent="Characters" instance=ExtResource("7_lpp7i")]
 position = Vector2(260, 191)
 script = ExtResource("2_syntk")
 
-[node name="TestObjects" type="Node2D" parent="."]
+[node name="TestObjects" type="Node2D" parent="Characters"]
 position = Vector2(307, 309)
 
-[node name="Character" parent="TestObjects" instance=ExtResource("7_lpp7i")]
+[node name="Character" parent="Characters/TestObjects" instance=ExtResource("7_lpp7i")]
 
-[node name="Character2" parent="TestObjects" instance=ExtResource("7_lpp7i")]
+[node name="Character2" parent="Characters/TestObjects" instance=ExtResource("7_lpp7i")]
 position = Vector2(-77, -5)
 rotation = 0.523599
 
-[node name="Character3" parent="TestObjects" instance=ExtResource("7_lpp7i")]
+[node name="Character3" parent="Characters/TestObjects" instance=ExtResource("7_lpp7i")]
 position = Vector2(20, -22)
 
-[node name="Character4" parent="TestObjects" instance=ExtResource("7_lpp7i")]
+[node name="Character4" parent="Characters/TestObjects" instance=ExtResource("7_lpp7i")]
 position = Vector2(-57, -27)
 rotation = 0.523599
+
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]
+[connection signal="timeout" from="TestDoorTimer" to="Elevator" method="_on_test_door_timer_timeout"]
+[connection signal="timeout" from="Elevator/LockDoors" to="Elevator" method="_on_lock_doors_timeout"]
+[connection signal="timeout" from="Elevator/OpenDoors" to="Elevator" method="_on_open_doors_timeout"]
+[connection signal="timeout" from="Elevator/CloseDoors" to="Elevator" method="_on_close_doors_timeout"]

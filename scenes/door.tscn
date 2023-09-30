@@ -5,7 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i8po"]
 size = Vector2(125, 20)
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="AnimatableBody2D"]
+sync_to_physics = false
 
 [node name="DoorSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ieku2")
