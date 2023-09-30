@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0lbi3wpt316t"]
+
+[ext_resource type="Script" path="res://scenes/test_ball.gd" id="1_bduuk"]
+[ext_resource type="Texture2D" uid="uid://xvor07syydxk" path="res://devart/testcircle.png" id="1_xo1l4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_600o8"]
+radius = 40.0
+
+[node name="TestBall" type="RigidBody2D"]
+inertia = 1.0
+script = ExtResource("1_bduuk")
+
+[node name="TestBallSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xo1l4")
+
+[node name="TestBallCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_600o8")
