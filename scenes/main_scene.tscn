@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cecnwrbpd3c2o"]
+[gd_scene load_steps=9 format=3 uid="uid://cecnwrbpd3c2o"]
 
 [ext_resource type="Texture2D" uid="uid://dap0yoohtcqt" path="res://devart/floor.png" id="1_f3onb"]
 [ext_resource type="Texture2D" uid="uid://cufi6eu3lvllx" path="res://devart/background.png" id="1_jax02"]
 [ext_resource type="PackedScene" uid="uid://dmxr40anc7yh2" path="res://scenes/door.tscn" id="2_5v1a8"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="2_syntk"]
 [ext_resource type="Texture2D" uid="uid://d4helyobm3h2j" path="res://devart/chatbox.png" id="5_6qf4q"]
 [ext_resource type="PackedScene" uid="uid://5p38yv3d83ii" path="res://scenes/wall.tscn" id="5_14h17"]
 [ext_resource type="PackedScene" uid="uid://dmx38ulwadban" path="res://frame.tscn" id="6_jyvo4"]
@@ -51,6 +52,10 @@ position = Vector2(550, 25)
 [node name="Chatbox" type="Sprite2D" parent="Chat"]
 texture = ExtResource("5_6qf4q")
 centered = false
+
+[node name="Player" parent="." instance=ExtResource("7_lpp7i")]
+position = Vector2(260, 191)
+script = ExtResource("2_syntk")
 
 [node name="TestObjects" type="Node2D" parent="."]
 position = Vector2(307, 309)
