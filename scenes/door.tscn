@@ -3,12 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://de0bauxhv5cqo" path="res://devart/door.png" id="1_ieku2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i8po"]
-size = Vector2(150, 40)
+size = Vector2(125, 20)
 
 [node name="Door" type="StaticBody2D"]
 
-[node name="DoorCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7i8po")
-
 [node name="DoorSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ieku2")
+centered = false
+
+[node name="DoorCollision" type="CollisionShape2D" parent="."]
+position = Vector2(62.5, 10)
+shape = SubResource("RectangleShape2D_7i8po")

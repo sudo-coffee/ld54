@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://5p38yv3d83ii"]
+
+[ext_resource type="Texture2D" uid="uid://dyktb51wvqy02" path="res://devart/wall.png" id="1_hb4jo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gicw3"]
+size = Vector2(25, 500)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="WallSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hb4jo")
+centered = false
+
+[node name="WallCollision" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, 250)
+shape = SubResource("RectangleShape2D_gicw3")
