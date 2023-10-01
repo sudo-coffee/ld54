@@ -11,3 +11,4 @@ func _ready():
     color = Color(rng.randf(), rng.randf(), rng.randf(), 1.0)
     color.v = rng.randf() / 2.0 + 0.5 # Keep value at 0.5 or higher.
     firstname = namepool[rng.randi() % namepool.size()]
+    $Shoulders/ShouldersSprite.modulate = color
