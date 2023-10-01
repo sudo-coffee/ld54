@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://djax65cwt7veu"]
+[gd_scene load_steps=6 format=3 uid="uid://djax65cwt7veu"]
 
 [ext_resource type="Texture2D" uid="uid://duxq0tbevntks" path="res://devart/shoulders.png" id="1_1c0px"]
+[ext_resource type="Script" path="res://scenes/character.gd" id="1_kk4me"]
 [ext_resource type="Texture2D" uid="uid://bo8o488y3hh0l" path="res://devart/head.png" id="2_auf6b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ohuhf"]
@@ -11,6 +12,7 @@ height = 110.0
 radius = 25.0
 
 [node name="Character" type="Node2D"]
+script = ExtResource("1_kk4me")
 
 [node name="Shoulders" type="RigidBody2D" parent="."]
 position = Vector2(0, 8)
