@@ -1,9 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://6jowurc1jfd3"]
+[gd_scene load_steps=9 format=3 uid="uid://6jowurc1jfd3"]
 
 [ext_resource type="Script" path="res://scenes/title.gd" id="1_lqxyp"]
 [ext_resource type="Texture2D" uid="uid://dem75jqppw3r1" path="res://devart/title.png" id="1_tepiq"]
 [ext_resource type="Texture2D" uid="uid://b7yxjsn2i1iol" path="res://devart/fade.png" id="3_b7iep"]
+[ext_resource type="FontFile" uid="uid://2ws3of5yx0st" path="res://addons/fonts/Garton/garto16.ttf" id="3_w3laq"]
 [ext_resource type="FontFile" uid="uid://bwjelbn46gmlj" path="res://addons/fonts/nimbus-roman-no9-l/NimbusRomNo9L-RegIta.otf" id="3_yc54l"]
+
+[sub_resource type="Animation" id="Animation_q3fwo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tkkpd"]
 resource_name = "fade_title"
@@ -21,21 +37,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.1)]
 }
 
-[sub_resource type="Animation" id="Animation_q3fwo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c0e44"]
 _data = {
 "RESET": SubResource("Animation_q3fwo"),
@@ -49,14 +50,25 @@ script = ExtResource("1_lqxyp")
 texture = ExtResource("1_tepiq")
 centered = false
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color(0.937255, 0.937255, 1, 0.615686)
+offset_left = 469.0
+offset_top = 149.0
+offset_right = 943.0
+offset_bottom = 454.0
+theme_override_fonts/normal_font = ExtResource("3_w3laq")
+theme_override_font_sizes/normal_font_size = 90
+text = "Elevators
+Go Boink"
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-modulate = Color(0.937255, 0.937255, 1, 0.505882)
-offset_left = 475.0
-offset_top = 352.0
-offset_right = 871.0
-offset_bottom = 492.0
+modulate = Color(0.937255, 0.937255, 1, 0.482353)
+offset_left = 500.0
+offset_top = 355.0
+offset_right = 896.0
+offset_bottom = 495.0
 theme_override_fonts/normal_font = ExtResource("3_yc54l")
-theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/normal_font_size = 50
 text = "Press Space
 "
 

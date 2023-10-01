@@ -22,7 +22,7 @@ var random_messages = [
     "Cheescake?",
     "Where's your money now, kid!",
     "What was is it I was looking for?",
-    "Could- Could- I- Just a bone?",
+    "Could- Could- I- Have- Bone-",
     "♫ Count your bones tomorrow ♫",
     "ψ( ` ∇ ´ )ψ",
     "＼o／",
