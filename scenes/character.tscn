@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://djax65cwt7veu"]
+[gd_scene load_steps=8 format=3 uid="uid://djax65cwt7veu"]
 
 [ext_resource type="Texture2D" uid="uid://duxq0tbevntks" path="res://devart/shoulders.png" id="1_1c0px"]
-[ext_resource type="Script" path="res://scenes/character.gd" id="1_kk4me"]
+[ext_resource type="Script" path="res://scenes/Character.gd" id="1_dim8s"]
 [ext_resource type="Texture2D" uid="uid://bo8o488y3hh0l" path="res://devart/head.png" id="2_auf6b"]
+[ext_resource type="Texture2D" uid="uid://b2g23mup3tk7b" path="res://devart/shadow.png" id="4_a7yn4"]
+[ext_resource type="Script" path="res://scenes/Shadow.gd" id="5_p5igw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ohuhf"]
 radius = 20.0
@@ -12,7 +14,7 @@ height = 110.0
 radius = 25.0
 
 [node name="Character" type="Node2D"]
-script = ExtResource("1_kk4me")
+script = ExtResource("1_dim8s")
 
 [node name="Shoulders" type="RigidBody2D" parent="."]
 position = Vector2(0, 8)
@@ -25,6 +27,7 @@ linear_damp = 6.0
 angular_damp = 8.0
 
 [node name="ShouldersSprite" type="Sprite2D" parent="Shoulders"]
+light_mask = 3
 texture = ExtResource("1_1c0px")
 
 [node name="ShouldersCollision" type="CollisionShape2D" parent="Shoulders"]
@@ -45,9 +48,16 @@ node_b = NodePath("..")
 softness = 1.0
 
 [node name="HeadSprite" type="Sprite2D" parent="Head"]
+light_mask = 3
 z_index = 1
 texture = ExtResource("2_auf6b")
 
 [node name="HeadCollision" type="CollisionShape2D" parent="Head"]
 z_index = 2
 shape = SubResource("CircleShape2D_r3wml")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 8)
+texture = ExtResource("4_a7yn4")
+script = ExtResource("5_p5igw")

@@ -1,12 +1,12 @@
 extends Node2D
 
-var open: bool = false # Target door state.
+var open: bool = true # Target door state.
 var speed: float = 0.0 # How fast the door is currently closing.
 
 
-func _on_test_door_timer_timeout():
-    toggle_doors()
-    $".."/Chat.add_message("HI THERE!!! Some more text.", $".."/Characters/Player)
+#func _on_test_door_timer_timeout():
+#    toggle_doors()
+#    $".."/Chat.add_message("HI THERE!!! Some more text.", $".."/Characters/Player)
 
 
 func toggle_doors():
