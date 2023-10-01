@@ -110,7 +110,7 @@ func start_chapter():
     await wait(4.5, true); chat.add_notice("[i]Use the arrow keys to move.[/i]")
     $".."/".."/Characters.player_active = true
 
-    var keys_to_press = ['ui_left', 'ui_right', 'ui_up', 'ui_down']
+    var keys_to_press = ['ui_left', 'ui_right', 'ui_up']
     while keys_to_press:
         await pressedDirection
         if Input.is_action_pressed("ui_left"):
@@ -119,8 +119,6 @@ func start_chapter():
             keys_to_press.erase("ui_right")
         if Input.is_action_pressed("ui_up"):
             keys_to_press.erase("ui_up")
-        if Input.is_action_pressed("ui_down"):
-            keys_to_press.erase("ui_down")
 
     await wait(8.0); chat.add_message(char4, "Just the one of you this time?")
     await wait(3.0); chat.player_message("Hmm?")
